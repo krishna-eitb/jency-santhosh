@@ -130,7 +130,7 @@ export default function DateSection() {
           </div>
 
           <div data-reveal className="relative z-20 -mt-10 self-end md:mt-0 md:-ml-14 md:self-auto">
-            <CallaLilies className="absolute -left-16 bottom-0 z-0 h-32 w-32 md:left-auto md:-right-32 md:h-48 md:w-48 md:scale-x-[-1]" />
+            {/* <CallaLilies className="absolute -left-16 bottom-0 z-0 h-32 w-32 md:left-auto md:-right-32 md:h-48 md:w-48 md:scale-x-[-1]" /> */}
             <time
               dateTime="2026-11-15"
               className="relative z-10 flex h-[12rem] w-[12rem] flex-col items-center justify-center rounded-full bg-deep-sea text-center text-ivory shadow-[0_14px_34px_rgba(30,45,45,0.35)] md:h-[15rem] md:w-[15rem]"
