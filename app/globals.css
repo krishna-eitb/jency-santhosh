@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { @apply bg-ivory font-sans text-ink antialiased; overflow-x: hidden; }
+  .font-serif { font-variant-numeric: lining-nums; }
+  :focus-visible { outline: 2px solid #AA895D; outline-offset: 4px; }
+  ::selection { background: #E8D7C0; }
+}
+
+/* Very faint paper grain, decorative only */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Slow, barely-there drift on the closing image */
+@keyframes drift { from { transform: scale(1.04) translate3d(0,0,0); } to { transform: scale(1.1) translate3d(-1.2%, -0.8%, 0); } }
+.drift { animation: drift 30s ease-in-out infinite alternate; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .drift { animation: none; } }
+
+/* Invitation photo: melts into the section background (top edge, all breakpoints) */
+.fade-photo {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.6) 14%, #000 34%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.6) 14%, #000 34%);
+}
+
+/* Paper-textured background for the date section */
+.paper {
+  background-color: #FBF7F0;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% 0%, rgba(255,255,255,.85), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(232,215,192,.35), transparent 70%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .33  0 0 0 .11 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+}
